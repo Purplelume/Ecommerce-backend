@@ -3,7 +3,7 @@
 ![License Badge](https://shields.io/badge/license-MIT-blue)
 
 ## Description
-This project is keeping in stock databases and managing them.
+This project is about building the back end for an e-commerce site. Letting the user Create, Update, Delete and View files in the database.
 
 ### Table of Contents:
 * [Installation](#installation)
