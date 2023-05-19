@@ -1,8 +1,6 @@
 const router = require('express').Router();
 const { Category, Product } = require('../../models');
 
-// The `/api/categories` endpoint
-
 router.get('/', async (req, res) => {
   try {
   const categoryData = await Category.findAll({
@@ -20,7 +18,7 @@ router.get('/:id', async (req, res) => {
       include: [{ model: Product }],
     })
     if (!categoryById) {
-      res.status(404).json({ message: 'No category data found with that id!' });
+      res.status(404).json({ message: 'No category data found' });
       return;
     }
     res.status(200).json(categoryById)
@@ -30,12 +28,6 @@ router.get('/:id', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-  /* req.body should look like this...
-  {
-    "category_name": "Watches"
-  }
-  productIds references existing products that may also have the new tag attached to them.
-  */
   try {
       const categoryData =  await Category.create(req.body)
       res.status(200).json({ message: "Category created successfully:", category: categoryData });
@@ -64,7 +56,7 @@ router.delete('/:id', async (req, res) => {
       },
   })
   if (!categoryData) {
-    res.status(404).json({ message: 'No category data found with that id!' });
+    res.status(404).json({ message: 'No category data found' });
     return;
   }
   res.status(200).json({ message: `Deleted the category '${categoryName.category_name}' with id: ${categoryName.id}`});

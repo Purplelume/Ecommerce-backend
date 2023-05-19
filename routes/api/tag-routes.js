@@ -1,8 +1,6 @@
 const router = require('express').Router();
 const { Tag, Product, ProductTag } = require('../../models');
 
-// The `/api/tags` endpoint
-
 router.get('/', async (req, res) => {
   try {
     const tagData = await Tag.findAll({
@@ -30,13 +28,6 @@ router.get('/:id', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-  /* req.body should look like this...
-  {
-    "tag_name": "orange",
-    "productIds": [ 4, 7 ]
-  }
-  productIds references existing products that may also have the new tag attached to them.
-  */
   try {
     const tagData = await Tag.create(req.body)
 
@@ -64,9 +55,7 @@ router.put('/:id', async (req, res) => {
       },
     });
     const taggedProducts = await ProductTag.findAll({ where: { tag_id: req.params.id } });
-    // get list of current product_ids
     const taggedProductsIds = taggedProducts.map(({ product_id }) => product_id);
-    // create filtered list of new tag_ids
     const newTaggedProducts = req.body.productIds
       .filter((product_id) => !taggedProductsIds.includes(product_id))
       .map((product_id) => {
@@ -75,11 +64,9 @@ router.put('/:id', async (req, res) => {
           product_id,
         };
       });
-    // figure out which ones to remove
     const taggedProductsToRemove = taggedProducts
       .filter(({ product_id }) => !req.body.productIds.includes(product_id))
       .map(({ id }) => id);
-    // run both actions
     await Promise.all([
       ProductTag.destroy({ where: { id: taggedProductsToRemove } }),
       ProductTag.bulkCreate(newTaggedProducts),

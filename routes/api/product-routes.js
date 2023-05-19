@@ -1,8 +1,6 @@
 const router = require('express').Router();
 const { Product, Category, Tag, ProductTag } = require('../../models');
 
-// The `/api/products` endpoint
-
 router.get('/', async (req, res) => {
   try {
     const productData = await Product.findAll({
@@ -20,7 +18,7 @@ router.get('/:id', async (req, res) => {
       include: [{ model: Category }, { model: Tag, as : 'product_tags', attributes: ['tag_name', 'id'], through: { attributes: []}}]
     });
     if (!productData) {
-      res.status(404).json({ message: 'No product found with this id!' });
+      res.status(404).json({ message: 'No product found' });
       return;
     }
     res.status(200).json(productData);
@@ -30,15 +28,6 @@ router.get('/:id', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-  /* req.body should look like this...
-    {
-      product_name: "Basketball",
-      price: 200.00,
-      stock: 3,
-      category_id: 2,
-      tagIds: [1, 2, 3, 4]
-    }
-  */
   try {
     const product = await Product.create(req.body);
   
@@ -99,14 +88,13 @@ router.delete('/:id', async (req, res) => {
       },
   })
   if (!productData) {
-    res.status(404).json({ message: 'No category data found with that id!' });
+    res.status(404).json({ message: 'No category data found' });
     return;
   }
   res.status(200).json({ message: `Deleted the product '${productName.product_name}' with id: ${productName.id}`});
 } catch (err) {
   res.status(400).json(err)
 }
-  // delete one product by its `id` value
 });
 
 module.exports = router;
