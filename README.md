@@ -1,36 +1,74 @@
-# Ecommerce-backend
+# Ecommerce Backend
 
-![License Badge](https://shields.io/badge/license-MIT-blue)
+![License Badge](https://img.shields.io/badge/license-MIT-blue)
 
 ## Description
-This project is about building the back end for an e-commerce site. Letting the user Create, Update, Delete and View files in the database.
 
-### Table of Contents:
+The Ecommerce Backend project focuses on creating the backend infrastructure for an e-commerce website. It enables users to perform essential CRUD (Create, Read, Update, Delete) operations on database records.
+
+### Table of Contents
+
 * [Installation](#installation)
 * [Usage](#usage)
 * [License](#license)
 * [Contributing](#contributions)
-* [Tests](#tests)
+* [Testing](#tests)
 * [Questions](#do-you-have-any-questions)
+* [Video Walkthrough](#video-walkthrough)
 
 ## Installation  
-You must download node.js, express.js, sequelize.js, dotenv.js and mysql2.js
+
+To get started, make sure you have the following prerequisites installed:
+
+- [Node.js](https://nodejs.org/)
+- [Express.js](https://expressjs.com/)
+- [Sequelize.js](https://sequelize.org/)
+- [dotenv.js](https://www.npmjs.com/package/dotenv)
+- [mysql2.js](https://www.npmjs.com/package/mysql2)
 
 ## Usage
-You should install the dependencies using "npm install", then initialize the database running "mysql -u root -p". Run "node ./seed/index.js" in the terminal on the correct folder to populate the database. Run "nmp start". Then test on Insomnia the various usage.
+
+Follow these steps to set up and use the Ecommerce Backend:
+
+1. Install project dependencies by running `npm install`.
+
+2. Initialize the database by running `mysql -u root -p` in your terminal.
+
+3. Populate the database with initial data by running `node ./seed/index.js` from the correct folder.
+
+4. Start the application by running `npm start`.
+
+5. To test the functionality, use a tool like [Insomnia](https://insomnia.rest/) to perform various CRUD operations.
 
 ## License
-https://mit-license.org/
 
-## Contributions
-Copy the repositories on your computer, make the changes you want to make, and then do a pull request on my GitHub.
+This project is licensed under the [MIT License](https://mit-license.org/).
 
-## Tests
-Do as shown here to test the application:
-Same as usage instructions. So: "node ./seed/index.js" in the terminal on the correct folder to populate the database. Run "nmp start". Then test on Insomnia the various usage.
+## Contributing
 
-## Do you have any questions
-Don't esitate to reach me at my GitHub [Purplelume](https://github.com/Purplelume) or reach out at my email address: sample.gmail.com
+If you'd like to contribute to this project, follow these steps:
 
-## Video Walktrought
-[Link to the video](https://drive.google.com/file/d/10N2GaVBNotdnVc-Apkv8kahUiahgf3T2/view)
+1. Clone the repository to your local machine.
+
+2. Make the desired changes in your local copy.
+
+3. Create a pull request on [GitHub](https://github.com/Purplelume).
+
+## Testing
+
+To test the application, follow the same steps as mentioned in the [Usage](#usage) instructions:
+
+- Run `node ./seed/index.js` to populate the database.
+- Start the application with `npm start`.
+- Use [Insomnia](https://insomnia.rest/) to test various functionalities.
+
+## Do you have any questions?
+
+If you have any questions or need further assistance, don't hesitate to reach out:
+
+- GitHub: [Purplelume](https://github.com/Purplelume)
+- Email: sample@gmail.com
+
+## Video Walkthrough
+
+For a more detailed walkthrough of the Ecommerce Backend project, check out the [video tutorial](https://drive.google.com/file/d/10N2GaVBNotdnVc-Apkv8kahUiahgf3T2/view).
